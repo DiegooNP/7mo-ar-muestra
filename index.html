@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <title>7.º grado — Hipogrifo AR</title>
+
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.8/aframe/build/aframe-ar.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      font-family: Arial, sans-serif;
+    }
+    #info {
+      position: fixed;
+      left: 50%;
+      top: 16px;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(88vw, 520px);
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.68);
+      color: white;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.3;
+      pointer-events: none;
+    }
+    #status {
+      display: block;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+    .found {
+      background: rgba(0,90,45,.78) !important;
+    }
+  </style>
+
+  <script>
+    AFRAME.registerComponent('marker-status', {
+      init: function () {
+        const info = document.getElementById('info');
+        const status = document.getElementById('status');
+
+        this.el.addEventListener('markerFound', () => {
+          info.classList.add('found');
+          status.textContent = '✓ Marcador detectado';
+        });
+
+        this.el.addEventListener('markerLost', () => {
+          info.classList.remove('found');
+          status.textContent = 'Buscando marcador HIRO…';
+        });
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="info">
+    Apuntá la cámara al marcador HIRO.
+    <span id="status">Buscando marcador HIRO…</span>
+  </div>
+
+  <a-scene
+    embedded
+    vr-mode-ui="enabled: false"
+    renderer="antialias: true; alpha: true; colorManagement: true;"
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+  >
+    <a-assets timeout="10000">
+      <img id="hipogrifo" src="./hipogrifo.png" crossorigin="anonymous">
+    </a-assets>
+
+    <a-marker
+      preset="hiro"
+      marker-status
+      emitevents="true"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance="0.01"
+      smoothThreshold="5"
+    >
+      <!-- Base luminosa para reforzar el efecto holograma -->
+      <a-ring
+        position="0 0.015 0"
+        rotation="-90 0 0"
+        radius-inner="0.43"
+        radius-outer="0.48"
+        material="color: #ffffff; opacity: 0.55; transparent: true;"
+        animation="property: rotation; to: -90 0 360; dur: 6500; loop: true; easing: linear"
+      ></a-ring>
+
+      <!-- Figura principal vertical -->
+      <a-image
+        src="#hipogrifo"
+        position="0 0.72 0"
+        width="1.350"
+        height="0.900"
+        material="transparent: true; alphaTest: 0.02; side: double;"
+        animation="property: position; from: 0 0.68 0; to: 0 0.76 0; dur: 1800; dir: alternate; loop: true; easing: easeInOutSine"
+      ></a-image>
+
+      <!-- Segunda cara cruzada: ayuda a verlo desde ángulos laterales -->
+      <a-image
+        src="#hipogrifo"
+        position="0 0.72 0"
+        rotation="0 90 0"
+        width="1.350"
+        height="0.900"
+        material="transparent: true; alphaTest: 0.02; side: double; opacity: 0.82;"
+        animation="property: position; from: 0 0.68 0; to: 0 0.76 0; dur: 1800; dir: alternate; loop: true; easing: easeInOutSine"
+      ></a-image>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+</html>
