@@ -18,13 +18,23 @@
 
 <body style="margin: 0; overflow: hidden;">
 
-  <a-scene embedded arjs>
+  <a-scene
+    embedded
+    vr-mode-ui="enabled: false"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+  >
 
     <a-assets>
       <img id="hipogrifo" src="hipogrifo.png">
     </a-assets>
 
-    <a-marker preset="hiro">
+    <a-marker
+      preset="hiro"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance="0.01"
+      smoothThreshold="5"
+    >
 
       <a-image
         src="#hipogrifo"
