@@ -36,6 +36,55 @@
       smoothThreshold="5"
     >
 
+      <!-- BASE HOLOGRÁFICA EXTERIOR -->
+      <a-ring
+        position="0 0.015 0"
+        rotation="-90 0 0"
+        radius-inner="0.34"
+        radius-outer="0.38"
+        material="
+          color: #36cfff;
+          shader: flat;
+          transparent: true;
+          opacity: 0.70;
+          side: double;
+        "
+        animation__pulse="
+          property: scale;
+          from: 0.95 0.95 0.95;
+          to: 1.10 1.10 1.10;
+          dur: 1800;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-ring>
+
+      <!-- BASE HOLOGRÁFICA INTERIOR -->
+      <a-ring
+        position="0 0.02 0"
+        rotation="-90 0 0"
+        radius-inner="0.22"
+        radius-outer="0.25"
+        material="
+          color: #b9f3ff;
+          shader: flat;
+          transparent: true;
+          opacity: 0.55;
+          side: double;
+        "
+        animation__pulse="
+          property: scale;
+          from: 1.08 1.08 1.08;
+          to: 0.92 0.92 0.92;
+          dur: 1600;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-ring>
+
+      <!-- HIPOGRIFO -->
       <a-entity
         position="0 0.62 0"
 
@@ -71,8 +120,7 @@
             alphaTest: 0.03;
             side: double;
           "
-        >
-        </a-image>
+        ></a-image>
 
       </a-entity>
 
