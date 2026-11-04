@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcadores AR - 7.º grado</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #111;
+      background: #eee;
+    }
+    .screen-note {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 18px 22px;
+      background: white;
+      border-radius: 10px;
+      line-height: 1.5;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 10mm auto;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 28mm;
+      page-break-after: always;
+      break-after: page;
+    }
+    .page:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+    h1 {
+      margin: 0 0 10mm;
+      font-size: 20pt;
+    }
+    .marker {
+      width: 150mm;
+      height: 150mm;
+      object-fit: contain;
+      display: block;
+    }
+    .label {
+      margin-top: 10mm;
+      font-size: 18pt;
+      font-weight: bold;
+    }
+    .sub {
+      margin-top: 3mm;
+      font-size: 11pt;
+    }
+    @media print {
+      body { background: white; }
+      .screen-note { display: none; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="screen-note">
+    <strong>Marcadores AR - muestra de 7.º grado</strong><br>
+    Imprimir en A4, escala 100 %, sin "Ajustar a página" y sin encabezados ni pies del navegador.
+    Cada marcador está configurado a 15 cm x 15 cm.
+    El Marcador 01 corresponde al hipogrifo.
+  </div>
+
+  <div id="pages"></div>
+
+  <script>
+    const root = "https://raw.githubusercontent.com/nicolocarpignoli/artoolkit-barcode-markers-collection/master/4x4_bch_13_5_5/";
+    const pages = document.getElementById("pages");
+
+    for (let i = 1; i <= 22; i++) {
+      const page = document.createElement("section");
+      page.className = "page";
+
+      const title = document.createElement("h1");
+      title.textContent = "Marcador AR " + String(i).padStart(2, "0");
+
+      const img = document.createElement("img");
+      img.className = "marker";
+      img.src = root + i + ".png";
+      img.alt = "Marcador AR " + i;
+
+      const label = document.createElement("div");
+      label.className = "label";
+      label.textContent = "ID " + i;
+
+      const sub = document.createElement("div");
+      sub.className = "sub";
+      sub.textContent = i === 1
+        ? "Obra 01 - Hipogrifo"
+        : "Obra " + String(i).padStart(2, "0");
+
+      page.appendChild(title);
+      page.appendChild(img);
+      page.appendChild(label);
+      page.appendChild(sub);
+      pages.appendChild(page);
+    }
+  </script>
+
+</body>
+</html>
