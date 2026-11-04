@@ -16,28 +16,50 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
   <script>
-    AFRAME.registerComponent('face-camera', {
+    AFRAME.registerComponent('billboard-y', {
+
       init: function () {
         this.camera = null;
-        this.target = new THREE.Vector3();
+        this.cameraWorld = new THREE.Vector3();
+        this.cameraLocal = new THREE.Vector3();
       },
 
       tick: function () {
+
         if (!this.camera) {
           this.camera = document.querySelector('[camera]');
         }
 
         if (!this.camera) return;
 
-        this.camera.object3D.getWorldPosition(this.target);
-        this.el.object3D.lookAt(this.target);
+        const parent = this.el.object3D.parent;
+
+        if (!parent) return;
+
+        this.camera.object3D.getWorldPosition(this.cameraWorld);
+
+        this.cameraLocal.copy(this.cameraWorld);
+
+        parent.worldToLocal(this.cameraLocal);
+
+        const angle =
+          Math.atan2(
+            this.cameraLocal.x,
+            this.cameraLocal.z
+          );
+
+        this.el.object3D.rotation.set(
+          0,
+          angle,
+          0
+        );
       }
     });
   </script>
 
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body style="margin:0; overflow:hidden;">
 
   <a-scene
     embedded
@@ -51,43 +73,29 @@
   >
 
     <a-assets>
-      <img id="hipogrifo" src="hipogrifo.png">
+
+      <img
+        id="hipogrifo"
+        src="hipogrifo.png"
+      >
+
     </a-assets>
 
     <a-marker
       preset="hiro"
+
       smooth="true"
       smoothCount="10"
       smoothTolerance="0.01"
       smoothThreshold="5"
     >
 
-      <!-- BASE HOLOGRÁFICA -->
-      <a-ring
-        position="0 0.02 0"
-        rotation="-90 0 0"
-        radius-inner="0.34"
-        radius-outer="0.40"
-        material="
-          color: #55ccff;
-          transparent: true;
-          opacity: 0.60;
-          side: double;
-        "
-        animation="
-          property: rotation;
-          to: -90 0 360;
-          dur: 6000;
-          loop: true;
-          easing: linear;
-        "
-      ></a-ring>
+      <!-- HIPOGRIFO -->
 
-
-      <!-- FIGURA FLOTANTE -->
       <a-entity
         position="0 0.62 0"
-        face-camera
+
+        billboard-y
 
         animation__float="
           property: position;
@@ -110,34 +118,19 @@
         "
       >
 
-        <!-- halo suave -->
         <a-image
           src="#hipogrifo"
-          position="0 0 -0.025"
-          width="1.03"
-          height="0.687"
-          material="
-            transparent: true;
-            alphaTest: 0.02;
-            opacity: 0.18;
-            side: double;
-          "
-          scale="1.04 1.04 1.04"
-        ></a-image>
 
+          width="1.10"
+          height="0.73"
 
-        <!-- imagen principal -->
-        <a-image
-          src="#hipogrifo"
-          position="0 0 0"
-          width="1"
-          height="0.667"
           material="
             transparent: true;
             alphaTest: 0.03;
             side: double;
           "
-        ></a-image>
+        >
+        </a-image>
 
       </a-entity>
 
