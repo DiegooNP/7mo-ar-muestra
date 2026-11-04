@@ -36,22 +36,45 @@
       smoothThreshold="5"
     >
 
-      <!-- BASE HOLOGRÁFICA EXTERIOR -->
-      <a-ring
-        position="0 0.015 0"
+      <!-- LUZ CENTRAL -->
+      <a-circle
+        position="0 0.01 0"
         rotation="-90 0 0"
-        radius-inner="0.34"
-        radius-outer="0.38"
+        radius="0.34"
         material="
-          color: #36cfff;
+          color: #00cfff;
           shader: flat;
           transparent: true;
-          opacity: 0.70;
+          opacity: 0.20;
           side: double;
         "
-        animation__pulse="
+        animation__glow="
+          property: material.opacity;
+          from: 0.12;
+          to: 0.32;
+          dur: 1600;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-circle>
+
+      <!-- ARO EXTERIOR -->
+      <a-ring
+        position="0 0.018 0"
+        rotation="-90 0 0"
+        radius-inner="0.36"
+        radius-outer="0.45"
+        material="
+          color: #00d9ff;
+          shader: flat;
+          transparent: true;
+          opacity: 0.95;
+          side: double;
+        "
+        animation__outer="
           property: scale;
-          from: 0.95 0.95 0.95;
+          from: 0.92 0.92 0.92;
           to: 1.10 1.10 1.10;
           dur: 1800;
           dir: alternate;
@@ -60,29 +83,54 @@
         "
       ></a-ring>
 
-      <!-- BASE HOLOGRÁFICA INTERIOR -->
+      <!-- ARO MEDIO -->
       <a-ring
-        position="0 0.02 0"
+        position="0 0.022 0"
         rotation="-90 0 0"
-        radius-inner="0.22"
-        radius-outer="0.25"
+        radius-inner="0.26"
+        radius-outer="0.32"
         material="
-          color: #b9f3ff;
+          color: #8cecff;
           shader: flat;
           transparent: true;
-          opacity: 0.55;
+          opacity: 0.95;
           side: double;
         "
-        animation__pulse="
+        animation__middle="
           property: scale;
           from: 1.08 1.08 1.08;
           to: 0.92 0.92 0.92;
-          dur: 1600;
+          dur: 1500;
           dir: alternate;
           loop: true;
           easing: easeInOutSine;
         "
       ></a-ring>
+
+      <!-- ARO CENTRAL -->
+      <a-ring
+        position="0 0.026 0"
+        rotation="-90 0 0"
+        radius-inner="0.14"
+        radius-outer="0.19"
+        material="
+          color: #ffffff;
+          shader: flat;
+          transparent: true;
+          opacity: 0.90;
+          side: double;
+        "
+        animation__core="
+          property: scale;
+          from: 0.90 0.90 0.90;
+          to: 1.12 1.12 1.12;
+          dur: 1300;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-ring>
+
 
       <!-- HIPOGRIFO -->
       <a-entity
