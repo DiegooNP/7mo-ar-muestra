@@ -9,7 +9,7 @@
     content="width=device-width, initial-scale=1.0, user-scalable=no"
   >
 
-  <title>Prueba Barcode 01 - Hipogrifo AR</title>
+  <title>7.º grado — Prueba AR 01 y 02</title>
 
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -29,9 +29,30 @@
     "
   >
 
+    <!-- ===================================================== -->
+    <!-- RECURSOS DEL PROYECTO                                 -->
+    <!-- ===================================================== -->
+
     <a-assets>
-      <img id="hipogrifo" src="hipogrifo.png">
+
+      <!-- OBRA 01 -->
+      <img
+        id="hipogrifo"
+        src="hipogrifo.png"
+      >
+
+      <!-- OBRA 02 -->
+      <img
+        id="caballero"
+        src="obra-02-caballero.png"
+      >
+
     </a-assets>
+
+
+    <!-- ===================================================== -->
+    <!-- MARCADOR 01 — HIPOGRIFO                               -->
+    <!-- ===================================================== -->
 
     <a-marker
       type="barcode"
@@ -140,6 +161,7 @@
       <!-- HIPOGRIFO -->
       <a-entity
         position="0 0.62 0"
+
         animation__float="
           property: position;
           from: 0 0.57 0;
@@ -149,6 +171,7 @@
           loop: true;
           easing: easeInOutSine;
         "
+
         animation__pulse="
           property: scale;
           from: 1 1 1;
@@ -177,6 +200,163 @@
 
     </a-marker>
 
+
+    <!-- ===================================================== -->
+    <!-- MARCADOR 02 — CABALLERO DORADO                        -->
+    <!-- ===================================================== -->
+
+    <a-marker
+      type="barcode"
+      value="2"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance="0.01"
+      smoothThreshold="5"
+    >
+
+      <!-- LUZ DORADA -->
+      <a-circle
+        position="0 0.01 0"
+        rotation="-90 0 0"
+        radius="0.34"
+        material="
+          color: #ffbf00;
+          shader: flat;
+          transparent: true;
+          opacity: 0.22;
+          side: double;
+        "
+        animation__glow="
+          property: material.opacity;
+          from: 0.12;
+          to: 0.34;
+          dur: 1600;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-circle>
+
+
+      <!-- ARO DORADO EXTERIOR -->
+      <a-ring
+        position="0 0.018 0"
+        rotation="-90 0 0"
+        radius-inner="0.36"
+        radius-outer="0.45"
+        material="
+          color: #ffbf00;
+          shader: flat;
+          transparent: true;
+          opacity: 0.95;
+          side: double;
+        "
+        animation__outer="
+          property: scale;
+          from: 0.92 0.92 0.92;
+          to: 1.10 1.10 1.10;
+          dur: 1800;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-ring>
+
+
+      <!-- ARO DORADO MEDIO -->
+      <a-ring
+        position="0 0.022 0"
+        rotation="-90 0 0"
+        radius-inner="0.26"
+        radius-outer="0.32"
+        material="
+          color: #ffe57a;
+          shader: flat;
+          transparent: true;
+          opacity: 0.95;
+          side: double;
+        "
+        animation__middle="
+          property: scale;
+          from: 1.08 1.08 1.08;
+          to: 0.92 0.92 0.92;
+          dur: 1500;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-ring>
+
+
+      <!-- ARO CENTRAL ROJO -->
+      <a-ring
+        position="0 0.026 0"
+        rotation="-90 0 0"
+        radius-inner="0.14"
+        radius-outer="0.19"
+        material="
+          color: #ff3030;
+          shader: flat;
+          transparent: true;
+          opacity: 0.92;
+          side: double;
+        "
+        animation__core="
+          property: scale;
+          from: 0.90 0.90 0.90;
+          to: 1.12 1.12 1.12;
+          dur: 1300;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      ></a-ring>
+
+
+      <!-- CABALLERO -->
+      <a-entity
+        position="0 0.72 0"
+
+        animation__float="
+          property: position;
+          from: 0 0.67 0;
+          to: 0 0.77 0;
+          dur: 1900;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+
+        animation__pulse="
+          property: scale;
+          from: 1 1 1;
+          to: 1.025 1.025 1.025;
+          dur: 2300;
+          dir: alternate;
+          loop: true;
+          easing: easeInOutSine;
+        "
+      >
+
+        <a-image
+          src="#caballero"
+          position="0 0 0"
+          rotation="0 0 0"
+          width="0.72"
+          height="1.05"
+          material="
+            transparent: true;
+            alphaTest: 0.03;
+            side: double;
+          "
+        ></a-image>
+
+      </a-entity>
+
+    </a-marker>
+
+
+    <!-- CÁMARA -->
     <a-entity camera></a-entity>
 
   </a-scene>
