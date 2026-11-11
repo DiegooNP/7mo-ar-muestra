@@ -88,6 +88,13 @@
         id="dragon-marino-esmeralda"
         src="obra-09-dragon-marino-esmeralda.png"
       >
+
+      <!-- OBRA 10 -->
+      <img
+        id="gargola-medusa"
+        src="obra-10-gargola-medusa.png"
+      >
+      
     </a-assets>
 
 
@@ -1470,7 +1477,156 @@
 
 </a-marker>
 
+<!-- ===================================================== -->
+<!-- MARCADOR 10 — GÁRGOLA MEDUSA                         -->
+<!-- ===================================================== -->
 
+<a-marker
+  type="barcode"
+  value="10"
+  smooth="true"
+  smoothCount="10"
+  smoothTolerance="0.01"
+  smoothThreshold="5"
+>
+
+  <!-- RESPLANDOR PIEDRA -->
+  <a-circle
+    position="0 0.01 0"
+    rotation="-90 0 0"
+    radius="0.36"
+    material="
+      color: #9da3aa;
+      shader: flat;
+      transparent: true;
+      opacity: 0.23;
+      side: double;
+    "
+    animation__glow="
+      property: material.opacity;
+      from: 0.12;
+      to: 0.34;
+      dur: 1750;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-circle>
+
+  <!-- ARO EXTERIOR GRIS METÁLICO -->
+  <a-ring
+    position="0 0.018 0"
+    rotation="-90 0 0"
+    radius-inner="0.38"
+    radius-outer="0.47"
+    material="
+      color: #7c858e;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__outer="
+      property: scale;
+      from: 0.92 0.92 0.92;
+      to: 1.10 1.10 1.10;
+      dur: 1900;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- ARO MEDIO ÁMBAR -->
+  <a-ring
+    position="0 0.022 0"
+    rotation="-90 0 0"
+    radius-inner="0.27"
+    radius-outer="0.34"
+    material="
+      color: #ffb300;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__middle="
+      property: scale;
+      from: 1.08 1.08 1.08;
+      to: 0.92 0.92 0.92;
+      dur: 1500;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- ARO CENTRAL BLANCO -->
+  <a-ring
+    position="0 0.026 0"
+    rotation="-90 0 0"
+    radius-inner="0.14"
+    radius-outer="0.19"
+    material="
+      color: #ffffff;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__core="
+      property: scale;
+      from: 0.90 0.90 0.90;
+      to: 1.12 1.12 1.12;
+      dur: 1300;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- GÁRGOLA MEDUSA -->
+  <a-entity
+    position="0 0.73 0"
+
+    animation__float="
+      property: position;
+      from: 0 0.67 0;
+      to: 0 0.79 0;
+      dur: 2050;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+
+    animation__pulse="
+      property: scale;
+      from: 1 1 1;
+      to: 1.02 1.02 1.02;
+      dur: 2400;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  >
+
+    <a-image
+      src="#gargola-medusa"
+      position="0 0 0"
+      rotation="0 0 0"
+      width="1.20"
+      height="0.90"
+      material="
+        transparent: true;
+        alphaTest: 0.03;
+        side: double;
+      "
+    ></a-image>
+
+  </a-entity>
+
+</a-marker>
+    
     
 <!-- CÁMARA -->
     <a-entity camera></a-entity>
