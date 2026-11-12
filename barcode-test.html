@@ -154,7 +154,13 @@
         id="dragon-marino-alas-doradas"
         src="obra-20-dragon-marino-alas-doradas.png"
       >
-    
+
+      <!-- OBRA 21 -->
+      <img
+        id="guardian-marino-cristal"
+        src="obra-21-guardian-marino-cristal.png"
+      >
+      
     </a-assets>
 
 
@@ -3190,6 +3196,159 @@
       rotation="0 0 0"
       width="1.25"
       height="0.78"
+      material="
+        shader: flat;
+        transparent: true;
+        alphaTest: 0.03;
+        opacity: 1;
+        side: double;
+        depthWrite: false;
+      "
+    ></a-image>
+
+  </a-entity>
+
+</a-marker>
+
+<!-- ===================================================== -->
+<!-- MARCADOR 21 — GUARDIÁN MARINO DE CRISTAL             -->
+<!-- ===================================================== -->
+
+<a-marker
+  type="barcode"
+  value="21"
+  smooth="true"
+  smoothCount="10"
+  smoothTolerance="0.01"
+  smoothThreshold="5"
+>
+
+  <!-- RESPLANDOR CIAN -->
+  <a-circle
+    position="0 0.01 0"
+    rotation="-90 0 0"
+    radius="0.35"
+    material="
+      color: #21e6ff;
+      shader: flat;
+      transparent: true;
+      opacity: 0.25;
+      side: double;
+    "
+    animation__glow="
+      property: material.opacity;
+      from: 0.12;
+      to: 0.40;
+      dur: 1650;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-circle>
+
+  <!-- ARO EXTERIOR AZUL CRISTAL -->
+  <a-ring
+    position="0 0.018 0"
+    rotation="-90 0 0"
+    radius-inner="0.38"
+    radius-outer="0.47"
+    material="
+      color: #008cff;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__outer="
+      property: scale;
+      from: 0.92 0.92 0.92;
+      to: 1.10 1.10 1.10;
+      dur: 1850;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- ARO MEDIO TURQUESA -->
+  <a-ring
+    position="0 0.022 0"
+    rotation="-90 0 0"
+    radius-inner="0.27"
+    radius-outer="0.34"
+    material="
+      color: #00e0c6;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__middle="
+      property: scale;
+      from: 1.08 1.08 1.08;
+      to: 0.92 0.92 0.92;
+      dur: 1450;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- ARO CENTRAL BLANCO -->
+  <a-ring
+    position="0 0.026 0"
+    rotation="-90 0 0"
+    radius-inner="0.14"
+    radius-outer="0.19"
+    material="
+      color: #ffffff;
+      shader: flat;
+      transparent: true;
+      opacity: 0.98;
+      side: double;
+    "
+    animation__core="
+      property: scale;
+      from: 0.90 0.90 0.90;
+      to: 1.12 1.12 1.12;
+      dur: 1250;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- GUARDIÁN MARINO DE CRISTAL -->
+  <a-entity
+    position="0 0.80 0"
+
+    animation__float="
+      property: position;
+      from: 0 0.74 0;
+      to: 0 0.86 0;
+      dur: 2050;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+
+    animation__pulse="
+      property: scale;
+      from: 1 1 1;
+      to: 1.02 1.02 1.02;
+      dur: 2350;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  >
+
+    <a-image
+      src="#guardian-marino-cristal"
+      position="0 0 0"
+      rotation="0 0 0"
+      width="0.80"
+      height="1.20"
       material="
         shader: flat;
         transparent: true;
