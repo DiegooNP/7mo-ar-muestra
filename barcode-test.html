@@ -139,7 +139,8 @@
       <!-- OBRA 18 -->
       <img
         id="guerrero-grifo"
-        src="obra-18-guerrero-grifo-grafito.png"
+        src="obra-18-guerrero-grifo-grafito.png?v=2"
+        crossorigin="anonymous"
       >
       
     </a-assets>
@@ -2866,17 +2867,20 @@
   >
 
     <a-image
-      src="#guerrero-grifo"
-      position="0 0 0"
-      rotation="0 0 0"
-      width="0.82"
-      height="1.18"
-      material="
-        transparent: true;
-        alphaTest: 0.03;
-        side: double;
-      "
-    ></a-image>
+  src="#guerrero-grifo"
+  position="0 0 0"
+  rotation="0 0 0"
+  width="0.82"
+  height="1.18"
+  material="
+    shader: flat;
+    transparent: true;
+    alphaTest: 0.01;
+    opacity: 1;
+    side: double;
+    depthWrite: false;
+    "
+  ></a-image>
 
   </a-entity>
 
