@@ -135,7 +135,12 @@
         id="zorro-felino-mistico"
         src="obra-17-zorro-felino-mistico.png"
       >
-      
+
+      <!-- OBRA 18 -->
+      <img
+        id="guerrero-grifo"
+        src="obra-18-guerrero-grifo.png"
+      >
     </a-assets>
 
 
@@ -2715,6 +2720,156 @@
       rotation="0 0 0"
       width="1.18"
       height="0.86"
+      material="
+        transparent: true;
+        alphaTest: 0.03;
+        side: double;
+      "
+    ></a-image>
+
+  </a-entity>
+
+</a-marker>
+
+<!-- ===================================================== -->
+<!-- MARCADOR 18 — GUERRERO GRIFO                         -->
+<!-- ===================================================== -->
+
+<a-marker
+  type="barcode"
+  value="18"
+  smooth="true"
+  smoothCount="10"
+  smoothTolerance="0.01"
+  smoothThreshold="5"
+>
+
+  <!-- RESPLANDOR PLATEADO -->
+  <a-circle
+    position="0 0.01 0"
+    rotation="-90 0 0"
+    radius="0.35"
+    material="
+      color: #d8d8d8;
+      shader: flat;
+      transparent: true;
+      opacity: 0.24;
+      side: double;
+    "
+    animation__glow="
+      property: material.opacity;
+      from: 0.12;
+      to: 0.36;
+      dur: 1700;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-circle>
+
+  <!-- ARO EXTERIOR ACERO -->
+  <a-ring
+    position="0 0.018 0"
+    rotation="-90 0 0"
+    radius-inner="0.37"
+    radius-outer="0.46"
+    material="
+      color: #9aa0a6;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__outer="
+      property: scale;
+      from: 0.92 0.92 0.92;
+      to: 1.10 1.10 1.10;
+      dur: 1850;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- ARO MEDIO BLANCO FRÍO -->
+  <a-ring
+    position="0 0.022 0"
+    rotation="-90 0 0"
+    radius-inner="0.27"
+    radius-outer="0.33"
+    material="
+      color: #eaf4ff;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__middle="
+      property: scale;
+      from: 1.08 1.08 1.08;
+      to: 0.92 0.92 0.92;
+      dur: 1500;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- ARO CENTRAL AZUL HIELO -->
+  <a-ring
+    position="0 0.026 0"
+    rotation="-90 0 0"
+    radius-inner="0.14"
+    radius-outer="0.19"
+    material="
+      color: #9ed8ff;
+      shader: flat;
+      transparent: true;
+      opacity: 0.95;
+      side: double;
+    "
+    animation__core="
+      property: scale;
+      from: 0.90 0.90 0.90;
+      to: 1.12 1.12 1.12;
+      dur: 1300;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  ></a-ring>
+
+  <!-- GUERRERO GRIFO -->
+  <a-entity
+    position="0 0.78 0"
+
+    animation__float="
+      property: position;
+      from: 0 0.72 0;
+      to: 0 0.84 0;
+      dur: 2050;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+
+    animation__pulse="
+      property: scale;
+      from: 1 1 1;
+      to: 1.02 1.02 1.02;
+      dur: 2350;
+      dir: alternate;
+      loop: true;
+      easing: easeInOutSine;
+    "
+  >
+
+    <a-image
+      src="#guerrero-grifo"
+      position="0 0 0"
+      rotation="0 0 0"
+      width="0.82"
+      height="1.18"
       material="
         transparent: true;
         alphaTest: 0.03;
